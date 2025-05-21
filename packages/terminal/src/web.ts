@@ -188,7 +188,8 @@ export class StripeTerminalWeb extends WebPlugin implements StripeTerminalPlugin
     if ((processResult as ErrorResponse).error) {
       throw new Error((processResult as ErrorResponse).error.message);
     }
-    this.notifyListeners(TerminalEventsEnum.ConfirmedPaymentIntent, null);
+    console.log("Confirm payment",processResult);
+    this.notifyListeners(TerminalEventsEnum.ConfirmedPaymentIntent, processResult);
   }
 
   async installAvailableUpdate(): Promise<void> {
