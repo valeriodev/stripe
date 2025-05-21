@@ -753,7 +753,7 @@ class StripeTerminal(
     private val confirmPaymentMethodCallback: PaymentIntentCallback =
         object : PaymentIntentCallback {
             override fun onSuccess(paymentIntent: PaymentIntent) {
-                notifyListeners(TerminalEnumEvent.ConfirmedPaymentIntent.webEventName, emptyObject)
+                notifyListeners(TerminalEnumEvent.ConfirmedPaymentIntent.webEventName, paymentIntent)
                 paymentIntentInstance = null
                 confirmPaymentIntentCall!!.resolve()
             }
